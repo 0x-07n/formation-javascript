@@ -22,6 +22,7 @@
     <title>Liste de fruits</title>
   </head>
   <body>
+    <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container px-5">
         <a class="navbar-brand" href="#!">
@@ -57,34 +58,7 @@
             </tr>
           </thead>
           <!-- tbody>tr>td*2 -->
-          <tbody id="myTbody">
-            <tr>
-              <td>pomme</td>
-              <td>
-                <button class="btn btn-danger">
-                  <i class="fa fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-          
-            <tr>
-              <td>poire</td>
-              <td>
-                <button class="btn btn-danger">
-                  <i class="fa fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-          
-            <tr>
-              <td>cerise</td>
-              <td>
-                <button class="btn btn-danger">
-                  <i class="fa fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
+          <tbody id="myTbody"></tbody>
         </table>
       </div>
     </div>
@@ -93,5 +67,16 @@
         <p class="m-0 text-center text-white">Copyright &copy;IMC 2023</p>
       </div>
     </footer>
+    <template id="templateTr">
+      <tr>
+        <td></td>
+        <td>
+          <button class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </template>
+    <script src="TP_fruit.js" defer></script>
   </body>
 </html>
