@@ -1,0 +1,42 @@
+<button id="btnAjouter">Ajouter</button>
+<button id="btnLecture">Lecture</button>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"
+  integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+
+<script>
+  const url =
+    "https://alpha-javascript-7cc48-default-rtdb.europe-west1.firebasedatabase.app/";
+  const noeud = "personnes";
+  const url2 = `${url}${noeud}.json`;
+  document.getElementById("btnAjouter").onclick = async () => {
+    const personne = { prenom: "Nicolas", nom: "CAGE" };
+    const response = await axios.post(url2, personne);
+    console.log(response.data);
+    const id = response.data.name;
+    console.log(id);
+  };
+  document.getElementById("btnLecture").onclick = async () => {
+    const response = await axios.get(url2);
+    const data = response.data;
+
+    // const objet =  {titre:'THE MATRIX', annee:'1999'};
+    // for (let attribut in objet){
+    //     console.log(attribut);// titre et annee
+    //     //afficher le contenu de l'objet
+    //     objet[attribut]; //un objet est aussi un tableau
+    // }
+
+    for (let id in data) {
+      console.log(id);
+      console.log(data[id]);
+    }
+    document.getElementById("btnPatch").onclick= async () =>{
+        const id = ''
+        const url3 = `${url}${noeud}/${id}`
+    }
+  };
+</script>

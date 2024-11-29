@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+
+ul {
+    list-style-type: none; /* Supprime les puces */
+    padding: 0; /* Supprime le padding par défaut */
+    margin: auto;
+}
+
+li {
+    display: inline; /* Affiche les éléments en ligne */
+    margin-right: 15px; /* Ajoute de l'espace entre les éléments */
+}
+
+a {
+    color: rgb(0, 0, 0); /* Couleur du texte */
+    text-decoration: none; /* Supprime le soulignement */
+    padding: 5px 10px; /* Ajoute du padding autour du texte */
+    transition: background-color 0.3s; /* Ajoute une transition pour le changement de couleur */
+}
+
+a:hover {
+    background-color: #555; /* Change la couleur de fond au survol */
+    border-radius: 3px; /* Ajoute des coins arrondis */
+    color: white
+}

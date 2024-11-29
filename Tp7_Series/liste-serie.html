@@ -1,0 +1,36 @@
+<input id="serie" /> <br /><br/>
+<button id="btnajouter">Ajouter</button>
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>Serie</th>
+            
+        </tr>
+    </thead>
+    <tbody id="myTbody"></tbody>
+</table>
+<template id="mytr">
+    <tr>
+        <td>
+            nom du film
+        </td>
+        <td><img width="80"></td>
+        <td>
+            <button></button>
+        </td>
+    </tr>
+</template>
+<script>
+    const key ="efc22751"
+    const url = 'http://www.omdbapi.com/?apikey=${key}';
+
+    document.getElementById ('btnAjouter').onclick = async()=>{
+            const serie = document.getElementById ('serie').value;
+            document.getElementById('serie').value='';
+        const url2 = `${url}&s=${serie}&type=series`
+        const r = await fetch(url2);
+        const data = await r.json();
+            series = data.Search;
+        
+    }
+</script>
