@@ -4,6 +4,7 @@ console.log(tab1);
 console.log(tab2);
 
 let startTime = null;
+let timerInterval = null; // Stocke l'intervalle du timer
 
 function melanger(tab) {
   for (let i = tab.length - 1; i > 0; i--) {
@@ -32,6 +33,24 @@ function resetSelection() {
   tuile2 = null;
 }
 
+// Fonction pour mettre à jour le timer
+function updateTimer() {
+  const currentTime = new Date();
+  const elapsedTime = (currentTime - startTime) / 1000; // Temps écoulé en secondes avec millisecondes
+  document.getElementById('timer').textContent = `Temps : ${elapsedTime.toFixed(3)} secondes`;
+}
+
+// Démarre le timer lorsque la partie commence
+function startTimer() {
+  startTime = new Date();
+  timerInterval = setInterval(updateTimer, 10); // Met à jour toutes les 10 millisecondes
+}
+
+// Arrête le timer lorsque la partie se termine
+function stopTimer() {
+  clearInterval(timerInterval);
+}
+
 const divs = document.querySelectorAll('#container > div');
 let selection = 0;
 let nom1 = "";
@@ -46,7 +65,7 @@ divs.forEach(tuile => {
       tuile.classList.add('green');
       selection++;
       if (startTime === null) {
-        startTime = new Date();
+        startTimer(); // Lance le timer
       }
 
       if (selection === 1) {
@@ -67,17 +86,18 @@ divs.forEach(tuile => {
             resetSelection();
             score++;
             if (score === 12) { 
+              stopTimer(); // Arrête le timer
               const endTime = new Date();
               document.getElementById('fin').classList.remove('none');
               alert(`Bravo, tu as fini en ${(endTime - startTime) / 1000} secondes !`);
             }
-          }, 500);
+          }, 50);
         } else {
           setTimeout(() => {
             tuile1.classList.remove('green');
             tuile2.classList.remove('green');
             resetSelection();
-          }, 500);
+          }, 50);
         }
       }
     } else if (tuile.classList.contains('green')) {
